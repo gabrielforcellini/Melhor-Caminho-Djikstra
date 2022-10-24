@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="21.0" text="Buscar" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="65.0" layoutY="15.0" prefHeight="26.0" prefWidth="325.0" promptText="Caminho para o arquivo" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="15.0" />
+      <Button layoutX="397.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Buscar" AnchorPane.leftAnchor="397.0" AnchorPane.topAnchor="15.0" />
+      <Label layoutX="15.0" layoutY="65.0" text="Código:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="65.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="95.0" text="Código:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="95.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="124.0" text="KM:" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="124.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="65.0" layoutY="61.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.leftAnchor="65.0" />
+      <TextField layoutX="65.0" layoutY="91.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="91.0" />
+      <TextField layoutX="65.0" layoutY="120.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="120.0" />
+      <Label layoutX="145.0" layoutY="64.0" text="Cidade:" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="64.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="195.0" layoutY="60.0" prefHeight="26.0" prefWidth="195.0" promptText="Ex.: Criciúma" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="60.0" />
+      <Label layoutX="145.0" layoutY="95.0" text="Cidade:" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="95.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField layoutX="195.0" layoutY="91.0" prefHeight="26.0" prefWidth="195.0" promptText="Ex.: Criciúma" AnchorPane.leftAnchor="195.0" AnchorPane.topAnchor="91.0" />
+      <Label layoutX="397.0" layoutY="64.0" text="(ORIGEM)" AnchorPane.leftAnchor="397.0" AnchorPane.topAnchor="64.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="397.0" layoutY="95.0" text="(DESTINO)" AnchorPane.leftAnchor="397.0" AnchorPane.topAnchor="95.0">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="545.0" layoutY="146.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" text="+" AnchorPane.rightAnchor="13.399999999999999" AnchorPane.topAnchor="146.0">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <TableView layoutX="14.0" layoutY="179.0" prefHeight="325.0" prefWidth="610.0">
+        <columns>
+          <TableColumn prefWidth="92.80002021789551" text="Código Origem" />
+          <TableColumn prefWidth="171.20000457763672" text="Cidade Origem" />
+            <TableColumn prefWidth="100.0" text="Código Destino" />
+            <TableColumn prefWidth="180.80001831054688" text="Cidade Destino" />
+            <TableColumn minWidth="8.00006103515625" prefWidth="64.79998779296875" text="Distância" />
+        </columns>
+      </TableView>
+      <Button layoutX="523.0" layoutY="512.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Processar" />
+      <Button layoutX="417.0" layoutY="512.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Salvar" />
+   </children>
+</AnchorPane>
