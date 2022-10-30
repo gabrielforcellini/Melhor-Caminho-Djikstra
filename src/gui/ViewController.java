@@ -1,7 +1,10 @@
 package gui;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
 
 import arquivo.ManipuladorArquivo;
 import grafos.Configuracoes;
@@ -13,61 +16,83 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
-public class ViewController implements Initializable{
+public class ViewController implements Initializable {
+	final String DIR_RAIZ = "C:\\Teste";
+	final String DIR_CONFIG = this.DIR_RAIZ + "\\Configuracao";
 	@FXML
 	private Button btnOk;
-	
+
 	@FXML
 	private CheckBox chkRotaAutomatica;
-	
+
 	@FXML
 	private TextField edtdirRaiz;
-	
+
 	@FXML
 	private TextField edtDirErro;
-	
-	@FXML 
+
+	@FXML
 	private TextField edtDirSucesso;
-	
+
 	@FXML
 	public void onBtnOkClick() {
 		Configuracoes config = null;
 		ManipuladorArquivo manipulador = null;
 		try {
-			if (!getMissed()){
+			if (!getMissed()) {
 				config = new Configuracoes();
 				manipulador = new ManipuladorArquivo();
 				config.setDiretorioErro(edtDirErro.getText());
 				config.setDiretorioRaiz(edtdirRaiz.getText());
 				config.setDiretorioSucesso(edtDirSucesso.getText());
 				config.setRotaAutomatica(chkRotaAutomatica.isSelected());
-				manipulador.escritor("c:\\Teste\\Configuracao\\config.txt", config.toString());
+				manipulador.escritor(DIR_CONFIG +"\\config.txt", config.toString());
 				System.exit(0);
 			}
 		} catch (Exception e) {
-			Alerts.showAlert("Arquivo config", "Erro ao criar arquivo de configuração", e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("Arquivo config", "Erro ao criar arquivo de configuração", e.getMessage(),
+					AlertType.ERROR);
 		}
-	} 
-	
+	}
+
 	@FXML
 	public void onchkRotaAutomaticaClick() {
-		//evento clique do botao rota automatica
+		// evento clique do botao rota automatica
+	}
+
+	// Método para verificar se o arquivo existe e não é um diretório
+	public static boolean isFileExists(File file) {
+		return file.exists() && !file.isDirectory();
+	}
+	
+	// Método para verificar se o diretório existe
+	public static boolean isDirExists(File file) {
+		return file.exists();
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO Auto-generated method stub
+		if (!isDirExists(new File(DIR_RAIZ))) {
+			JOptionPane.showMessageDialog(null, "O diretório "+DIR_RAIZ+" não foi encontrado",
+					"Diretório não encontrado", JOptionPane.OK_OPTION);
+			System.exit(0);
+		} else if (!isDirExists(new File(DIR_CONFIG))) {
+			JOptionPane.showMessageDialog(null, "O diretório "+ DIR_CONFIG +" não foi encontrado",
+					"Diretório não encontrado", JOptionPane.OK_OPTION);
+			System.exit(0);
+		}
 	}
-	
+
 	public boolean getMissed() {
 		boolean isFalse = false;
-		if (edtDirErro.getText() == "" ) {
+		if (edtDirErro.getText() == "") {
 			Alerts.showAlert("Erro", "Campo vazio", "O campo Erro não pode ser vazio!", AlertType.ERROR);
 			isFalse = true;
-		} else if (edtDirSucesso.getText() == "" ) {
+		} else if (edtDirSucesso.getText() == "") {
 			Alerts.showAlert("Erro", "Campo vazio", "O campo Sucesso não pode ser vazio!", AlertType.ERROR);
 			isFalse = true;
-		} else if (edtdirRaiz.getText() == "" ) {
+		} else if (edtdirRaiz.getText() == "") {
 			Alerts.showAlert("Erro", "Campo vazio", "O campo Raiz não pode ser vazio!", AlertType.ERROR);
 			isFalse = true;
 		}

@@ -19,11 +19,11 @@ public class ManipuladorArquivo {
 	public ManipuladorArquivo() {
 
 	}
-	
+
 	// Método para verificar se o arquivo existe e não é um diretório
-    public static boolean isFileExists(File file) {
-        return file.exists() && !file.isDirectory();
-    }
+	public static boolean isFileExists(File file) {
+		return file.exists() && !file.isDirectory();
+	}
 
 	public Configuracoes leitor(String path) throws IOException {
 		Configuracoes config = null;
