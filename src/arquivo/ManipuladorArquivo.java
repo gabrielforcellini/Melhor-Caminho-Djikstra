@@ -3,24 +3,24 @@ package arquivo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import grafos.Configuracoes;
-import grafos.Grafo;
 import gui.util.Alerts;
+import io.Escritor;
+import io.Leitor;
 import javafx.scene.control.Alert.AlertType;
 
 public class ManipuladorArquivo {
-
-	Grafo g = new Grafo();
 
 	public ManipuladorArquivo() {
 
 	}
 
-	// Método para verificar se o arquivo existe e não é um diretório
+	// Mï¿½todo para verificar se o arquivo existe e nï¿½o ï¿½ um diretï¿½rio
 	public static boolean isFileExists(File file) {
 		return file.exists() && !file.isDirectory();
 	}
@@ -28,6 +28,22 @@ public class ManipuladorArquivo {
 	public Configuracoes leitor(String path) throws IOException {
 		Configuracoes config = null;
 		try {
+			Leitor leitor = new Leitor();
+	        Escritor escritor = new Escritor();
+	        boolean isCreated = false;
+
+	        try {
+	            isCreated = leitor.lerCriarDadosConfig();
+	        } catch (IOException e ) {
+	            if(e.getClass().getSimpleName().equals(FileNotFoundException.class.getSimpleName())){
+	                escritor.criarPastasTesteArquivoConfig();
+	            }
+	        }
+
+	        if (!isCreated){
+	            leitor.lerCriarDadosConfig();
+	        }
+	        
 			if (isFileExists(new File(path))) {
 				BufferedReader buffRead = new BufferedReader(new FileReader(path));
 				String linha = "";
@@ -38,7 +54,7 @@ public class ManipuladorArquivo {
 						String[] textoSeparado = linha.split("=");
 						if (textoSeparado[0].equalsIgnoreCase("Processado")) {
 							config.setDiretorioSucesso(textoSeparado[1]);
-						} else if (textoSeparado[0].equalsIgnoreCase("Não Processado")) {
+						} else if (textoSeparado[0].equalsIgnoreCase("NÃ£o Processado")) {
 							config.setDiretorioErro(textoSeparado[1]);
 						} else if (textoSeparado[0].equalsIgnoreCase("Diretorio Raiz")) {
 							config.setDiretorioRaiz(textoSeparado[1]);
@@ -54,7 +70,7 @@ public class ManipuladorArquivo {
 				config = null;
 			}
 		} catch (Exception e) {
-			Alerts.showAlert("Arquivo", "Erro de Manipulação do arquivo", e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("Arquivo", "Erro de ManipulaÃ§Ã£o do arquivo", e.getMessage(), AlertType.ERROR);
 		}
 		return config;
 	}

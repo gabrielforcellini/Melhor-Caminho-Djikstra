@@ -30,7 +30,7 @@ public class Leitor {
             contador++;
         }
 
-        if (contador != 2){
+        if (contador < 2){
             Escritor escritor = new Escritor();
             escritor.criarPastasTesteArquivoConfig();
             return false;

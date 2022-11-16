@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import gui.util.Alerts;
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,11 +18,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import model.entities.Caminho;
 import model.services.CaminhoService;
 
-public class ViewManualController implements Initializable{
+public class ViewManualController extends Application implements Initializable{
 	
 	private CaminhoService service;
 	
@@ -119,6 +121,12 @@ public class ViewManualController implements Initializable{
 							edtCidadeDestino.getText(), Integer.parseInt(edtCodDestino.getText()), Double.parseDouble(edtKm.getText())));
 		obsList = FXCollections.observableArrayList(listaCaminhos);
 		tableViewCaminho.setItems(obsList);
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		Application.launch(ViewManualController.class);
 	}
 
 }

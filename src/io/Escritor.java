@@ -59,7 +59,7 @@ public class Escritor {
         arquivo.mkdir();
 
         // Cria o arquivo config dentro de C:/Teste/Configuracao
-        List<String> linhas = Arrays.asList("Processado=C:\\Teste\\Processado", "Não Processado=C:\\Teste\\NaoProcessado\n");
+        List<String> linhas = Arrays.asList("Processado=C:\\Teste\\Processado", "Não Processado=C:\\Teste\\NaoProcessado", "Diretorio Raiz=C:\\Teste", "Rota Automatica=False\n");
         Path arquivoConfig = Paths.get(Pastas.C_TESTE_CONFIGURACAO + "config.txt");
         try {
             Files.write(arquivoConfig, linhas, StandardCharsets.UTF_8);

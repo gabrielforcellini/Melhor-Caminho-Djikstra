@@ -50,7 +50,7 @@ public class ViewController implements Initializable {
 				System.exit(0);
 			}
 		} catch (Exception e) {
-			Alerts.showAlert("Arquivo config", "Erro ao criar arquivo de configuração", e.getMessage(),
+			Alerts.showAlert("Arquivo config", "Erro ao criar arquivo de configuraÃ§Ã£o", e.getMessage(),
 					AlertType.ERROR);
 		}
 	}
@@ -60,12 +60,12 @@ public class ViewController implements Initializable {
 		// evento clique do botao rota automatica
 	}
 
-	// Método para verificar se o arquivo existe e não é um diretório
+	// Mï¿½todo para verificar se o arquivo existe e nï¿½o ï¿½ um diretï¿½rio
 	public static boolean isFileExists(File file) {
 		return file.exists() && !file.isDirectory();
 	}
 	
-	// Método para verificar se o diretório existe
+	// Mï¿½todo para verificar se o diretï¿½rio existe
 	public static boolean isDirExists(File file) {
 		return file.exists();
 	}
@@ -74,12 +74,12 @@ public class ViewController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO Auto-generated method stub
 		if (!isDirExists(new File(DIR_RAIZ))) {
-			JOptionPane.showMessageDialog(null, "O diretório "+DIR_RAIZ+" não foi encontrado",
-					"Diretório não encontrado", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "O diretï¿½rio "+DIR_RAIZ+" nÃ£o foi encontrado",
+					"DiretÃ³rio nÃ£o encontrado", JOptionPane.OK_OPTION);
 			System.exit(0);
 		} else if (!isDirExists(new File(DIR_CONFIG))) {
-			JOptionPane.showMessageDialog(null, "O diretório "+ DIR_CONFIG +" não foi encontrado",
-					"Diretório não encontrado", JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "O diretï¿½rio "+ DIR_CONFIG +" nÃ£o foi encontrado",
+					"DiretÃ³rio nÃ£o encontrado", JOptionPane.OK_OPTION);
 			System.exit(0);
 		}
 	}
@@ -87,13 +87,13 @@ public class ViewController implements Initializable {
 	public boolean getMissed() {
 		boolean isFalse = false;
 		if (edtDirErro.getText() == "") {
-			Alerts.showAlert("Erro", "Campo vazio", "O campo Erro não pode ser vazio!", AlertType.ERROR);
+			Alerts.showAlert("Erro", "Campo vazio", "O campo Erro nÃ£o pode ser vazio!", AlertType.ERROR);
 			isFalse = true;
 		} else if (edtDirSucesso.getText() == "") {
-			Alerts.showAlert("Erro", "Campo vazio", "O campo Sucesso não pode ser vazio!", AlertType.ERROR);
+			Alerts.showAlert("Erro", "Campo vazio", "O campo Sucesso nÃ£o pode ser vazio!", AlertType.ERROR);
 			isFalse = true;
 		} else if (edtdirRaiz.getText() == "") {
-			Alerts.showAlert("Erro", "Campo vazio", "O campo Raiz não pode ser vazio!", AlertType.ERROR);
+			Alerts.showAlert("Erro", "Campo vazio", "O campo Raiz nÃ£o pode ser vazio!", AlertType.ERROR);
 			isFalse = true;
 		}
 		return isFalse;
